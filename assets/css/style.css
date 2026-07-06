@@ -71,7 +71,7 @@ border-radius:50%;color:#38bdf8;text-decoration:none;
 .hero-right img{
     width:420px;
     height:420px;
-    border-radius:20%;
+    border-radius:50%;
     object-fit:cover;
     object-position:center top;
     border:6px solid #2563eb;
