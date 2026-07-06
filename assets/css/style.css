@@ -69,13 +69,22 @@ border-radius:50%;color:#38bdf8;text-decoration:none;
 .social-icons a:hover{background:#38bdf8;color:#08111f}
 .hero-right{text-align:center}
 .hero-right img{
-width:420px;
-height:420px;
-border-radius:50%;
-object-fit:cover;
-object-position:center top;
-border:6px solid #2563eb;
-box-shadow:0 0 30px rgba(37,99,235,.45);
+    width:380px;
+    height:500px;
+    object-fit:cover;
+    object-position:center top;
+
+    border-radius:20px;
+
+    border:5px solid #2563eb;
+
+    box-shadow:0 15px 40px rgba(37,99,235,.35);
+
+    transition:0.4s;
+}
+
+.hero-right img:hover{
+    transform:scale(1.03);
 }
 
 section{padding:100px 0}
