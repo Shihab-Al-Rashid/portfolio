@@ -1,76 +1,115 @@
-// Portfolio V4 Script
+// Portfolio V5 Premium Starter
 
-// Smooth active nav
-const sections=document.querySelectorAll("section");
-const navLinks=document.querySelectorAll("nav a");
+document.addEventListener("DOMContentLoaded", () => {
 
-window.addEventListener("scroll",()=>{
-  let current="";
-  sections.forEach(sec=>{
-    const top=sec.offsetTop-120;
-    if(pageYOffset>=top){current=sec.getAttribute("id");}
+  // Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(link=>{
+    link.addEventListener("click",e=>{
+      const target=document.querySelector(link.getAttribute("href"));
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:"smooth"});
+      }
+    });
   });
 
-  navLinks.forEach(link=>{
-    link.classList.remove("active");
-    if(link.getAttribute("href")==="#"+current){
-      link.classList.add("active");
-    }
-  });
-
+  // Sticky header shadow
   const header=document.querySelector("header");
-  if(header){
-    header.style.boxShadow=window.scrollY>50?"0 8px 25px rgba(0,0,0,.35)":"none";
-  }
-});
-
-// Typing effect
-const title=document.querySelector(".hero h2");
-if(title){
-  const text=title.textContent;
-  title.textContent="";
-  let i=0;
-  function type(){
-    if(i<text.length){
-      title.textContent+=text.charAt(i++);
-      setTimeout(type,60);
-    }
-  }
-  window.addEventListener("load",type);
-}
-
-// Fade-in on scroll
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.style.opacity="1";
-      entry.target.style.transform="translateY(0)";
+  window.addEventListener("scroll",()=>{
+    if(header){
+      header.style.boxShadow=window.scrollY>30
+        ?"0 10px 30px rgba(0,0,0,.25)"
+        :"none";
     }
   });
-},{threshold:0.15});
 
-document.querySelectorAll(".card,.skill-card,.project-card,.timeline-item").forEach(el=>{
-  el.style.opacity="0";
-  el.style.transform="translateY(40px)";
-  el.style.transition="all .6s ease";
-  observer.observe(el);
+  // Active navbar
+  const sections=document.querySelectorAll("section[id]");
+  const navLinks=document.querySelectorAll("nav a");
+
+  function updateActive(){
+    let current="";
+    sections.forEach(sec=>{
+      const top=sec.offsetTop-140;
+      if(window.scrollY>=top){
+        current=sec.id;
+      }
+    });
+
+    navLinks.forEach(link=>{
+      link.classList.remove("active");
+      if(link.getAttribute("href")==="#"+current){
+        link.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll",updateActive);
+  updateActive();
+
+  // Scroll reveal
+  const revealItems=document.querySelectorAll(".card,.skill-card,.project-card,.timeline-item,.section-title");
+
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.style.opacity="1";
+        entry.target.style.transform="translateY(0)";
+      }
+    });
+  },{threshold:0.15});
+
+  revealItems.forEach(el=>{
+    el.style.opacity="0";
+    el.style.transform="translateY(40px)";
+    el.style.transition="all .6s ease";
+    observer.observe(el);
+  });
+
+  // Typing effect
+  const title=document.querySelector(".hero h2");
+  if(title){
+    const txt=title.textContent;
+    title.textContent="";
+    let i=0;
+    (function type(){
+      if(i<txt.length){
+        title.textContent+=txt.charAt(i++);
+        setTimeout(type,60);
+      }
+    })();
+  }
+
+  // Back to top button
+  const btn=document.createElement("button");
+  btn.innerHTML="↑";
+  btn.id="backTop";
+  Object.assign(btn.style,{
+    position:"fixed",
+    right:"25px",
+    bottom:"25px",
+    width:"50px",
+    height:"50px",
+    borderRadius:"50%",
+    border:"none",
+    background:"#2563eb",
+    color:"#fff",
+    fontSize:"22px",
+    cursor:"pointer",
+    display:"none",
+    zIndex:"9999"
+  });
+
+  document.body.appendChild(btn);
+
+  window.addEventListener("scroll",()=>{
+    btn.style.display=window.scrollY>350?"block":"none";
+  });
+
+  btn.onclick=()=>window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  console.log("Portfolio V5 Premium Loaded");
 });
-
-// Back to top
-const btn=document.createElement("button");
-btn.innerHTML="↑";
-btn.id="topBtn";
-Object.assign(btn.style,{
- position:"fixed",bottom:"25px",right:"25px",
- width:"48px",height:"48px",borderRadius:"50%",
- border:"none",background:"#2563eb",color:"#fff",
- fontSize:"22px",cursor:"pointer",display:"none",zIndex:"9999"
-});
-document.body.appendChild(btn);
-
-window.addEventListener("scroll",()=>{
-  btn.style.display=window.scrollY>300?"block":"none";
-});
-btn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
-
-console.log("Portfolio V4 loaded.");
