@@ -339,3 +339,286 @@ HERO
     box-shadow:0 15px 40px rgba(37,99,235,.35);
 
 }
+/*====================================
+SECTION TITLE
+====================================*/
+
+section{
+
+    padding:100px 0;
+
+}
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+.section-title span{
+
+    display:inline-block;
+
+    color:#3b82f6;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+}
+
+.section-title h2{
+
+    font-size:48px;
+
+    margin-bottom:18px;
+
+}
+
+.section-title p{
+
+    max-width:720px;
+
+    margin:auto;
+
+    color:#94a3b8;
+
+}
+
+
+
+/*====================================
+ABOUT
+====================================*/
+
+.about{
+
+    background:#0d1628;
+
+}
+
+.about-wrapper{
+
+    display:grid;
+
+    grid-template-columns:420px 1fr;
+
+    gap:70px;
+
+    align-items:center;
+
+}
+
+.about-image{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.about-image img{
+
+    width:380px;
+
+    height:500px;
+
+    object-fit:cover;
+
+    object-position:center top;
+
+    border-radius:20px;
+
+    border:5px solid #2563eb;
+
+    box-shadow:0 15px 45px rgba(37,99,235,.30);
+
+}
+
+.about-content h3{
+
+    font-size:36px;
+
+    margin-bottom:20px;
+
+}
+
+.about-content p{
+
+    color:#b8c3d6;
+
+    margin-bottom:22px;
+
+}
+
+
+
+.about-info{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin-top:35px;
+
+}
+
+.info-item{
+
+    background:#121f36;
+
+    padding:18px 22px;
+
+    border-radius:12px;
+
+    transition:.35s;
+
+}
+
+.info-item:hover{
+
+    transform:translateY(-6px);
+
+    border-left:4px solid #3b82f6;
+
+}
+
+.info-item strong{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#ffffff;
+
+}
+
+.info-item span{
+
+    color:#94a3b8;
+
+}
+
+
+
+/*====================================
+COUNTER
+====================================*/
+
+.counter{
+
+    background:#08111f;
+
+}
+
+.counter-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+.counter-box{
+
+    background:#111b2f;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    border-radius:18px;
+
+    transition:.35s;
+
+}
+
+.counter-box:hover{
+
+    transform:translateY(-10px);
+
+    background:#162443;
+
+}
+
+.counter-box h2{
+
+    font-size:48px;
+
+    color:#3b82f6;
+
+    margin-bottom:12px;
+
+}
+
+.counter-box p{
+
+    color:#c7d2e3;
+
+    font-size:17px;
+
+}
+
+
+
+/*====================================
+COMMON CARD STYLE
+====================================*/
+
+.card{
+
+    background:#111b2f;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    transition:.35s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+
+/*====================================
+ANIMATION
+====================================*/
+
+.fade-up{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
