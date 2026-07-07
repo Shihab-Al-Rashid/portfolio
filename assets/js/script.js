@@ -435,3 +435,84 @@ console.log(
 
 );    
 });
+/*====================================
+PROJECT MODAL
+====================================*/
+
+const modal = document.getElementById("projectModal");
+
+const modalTitle = document.getElementById("modalTitle");
+
+const modalImage = document.getElementById("modalImage");
+
+const modalDescription = document.getElementById("modalDescription");
+
+const modalTags = document.getElementById("modalTags");
+
+const closeModal = document.querySelector(".close-modal");
+
+const projectCards = document.querySelectorAll(".project-card");
+
+projectCards.forEach(card => {
+
+    card.addEventListener("click", function () {
+
+        modalTitle.textContent = card.dataset.title;
+
+        modalImage.src = card.dataset.image;
+
+        modalDescription.textContent = card.dataset.description;
+
+        modalTags.innerHTML = "";
+
+        const tags = card.dataset.tags.split(",");
+
+        tags.forEach(tag => {
+
+            const span = document.createElement("span");
+
+            span.textContent = tag.trim();
+
+            modalTags.appendChild(span);
+
+        });
+
+        modal.style.display = "flex";
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+});
+
+closeModal.onclick = function(){
+
+    modal.style.display = "none";
+
+    document.body.style.overflow = "auto";
+
+}
+
+window.onclick = function(e){
+
+    if(e.target==modal){
+
+        modal.style.display="none";
+
+        document.body.style.overflow="auto";
+
+    }
+
+}
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key==="Escape"){
+
+        modal.style.display="none";
+
+        document.body.style.overflow="auto";
+
+    }
+
+});
